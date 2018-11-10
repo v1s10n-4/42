@@ -1,0 +1,8 @@
+//
+// Created by Romain DANIEL on 11/21/18.
+//
+
+#ifndef GET_NEXT_LINE_GET_NEXT_LINE_H
+#define GET_NEXT_LINE_GET_NEXT_LINE_H
+
+#endif //GET_NEXT_LINE_GET_NEXT_LINE_H

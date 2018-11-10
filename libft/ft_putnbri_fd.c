@@ -1,32 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_putnbri_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rodaniel <rodaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/19 21:25:20 by rodaniel          #+#    #+#             */
-/*   Updated: 2018/11/19 21:25:20 by rodaniel         ###   ########.fr       */
+/*   Created: 2018/11/18 23:47:58 by rodaniel          #+#    #+#             */
+/*   Updated: 2018/11/18 23:48:29 by rodaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcat(char *str, const char *src)
+void		ft_putnbri_fd(int n, int fd)
 {
+	int		len;
 	int		i;
-	int		j;
+	long	j;
+	long	tmp;
 
-	i = 0;
-	j = 0;
-	while (str[i])
-		i++;
-	while (src[j])
+	len = 0;
+	i = -1;
+	j = 1;
+	tmp = n;
+	if (n < 0 && (n = -n))
+		ft_putchar_fd('-', fd);
+	if (n == -2147483648LL || n == 0)
+		return (ft_putstr_fd(n == 0 ? "0" : "2147483648", fd));
+	while (tmp /= 10)
+		len++;
+	tmp = n;
+	while (++i <= len)
 	{
-		str[i] = src[j];
-		i++;
-		j++;
+		while (j < tmp)
+			j *= 10;
+		j = j ? j /= 10 : 0;
+		ft_putchar_fd('0' + (tmp / j), fd);
+		tmp -= j * (tmp / j);
 	}
-	str[i] = 0;
-	return (str);
 }

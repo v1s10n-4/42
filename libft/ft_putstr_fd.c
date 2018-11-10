@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_printable.c                              :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rodaniel <rodaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/19 22:04:38 by rodaniel          #+#    #+#             */
-/*   Updated: 2018/11/19 22:04:38 by rodaniel         ###   ########.fr       */
+/*   Created: 2018/11/12 18:28:30 by rodaniel          #+#    #+#             */
+/*   Updated: 2018/11/15 17:24:04 by rodaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_str_is_printable(char *str)
+void	ft_putstr_fd(const char *s, int fd)
 {
-	while (ft_isprint(*str))
-		str++;
-	return (!*str);
+	if (s)
+		write(fd, s, ft_strlen(s));
 }

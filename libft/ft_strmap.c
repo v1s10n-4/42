@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_printable.c                              :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rodaniel <rodaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/19 22:04:38 by rodaniel          #+#    #+#             */
-/*   Updated: 2018/11/19 22:04:38 by rodaniel         ###   ########.fr       */
+/*   Created: 2018/11/13 01:31:51 by rodaniel          #+#    #+#             */
+/*   Updated: 2018/11/16 00:34:42 by rodaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_str_is_printable(char *str)
+char		*ft_strmap(const char *s, char (*f)(char))
 {
-	while (ft_isprint(*str))
-		str++;
-	return (!*str);
+	int		i;
+	char	*dst;
+
+	i = -1;
+	if (!s || !*s || (dst = ft_strnew(ft_strlen(s))) == NULL)
+		return (NULL);
+	while (s[++i])
+		dst[i] = f((char)s[i]);
+	dst[i] = 0;
+	return (dst);
 }

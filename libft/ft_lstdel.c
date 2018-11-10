@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_printable.c                              :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rodaniel <rodaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/19 22:04:38 by rodaniel          #+#    #+#             */
-/*   Updated: 2018/11/19 22:04:38 by rodaniel         ###   ########.fr       */
+/*   Created: 2018/11/15 20:48:26 by rodaniel          #+#    #+#             */
+/*   Updated: 2018/11/15 22:34:08 by rodaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_str_is_printable(char *str)
+void			ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	while (ft_isprint(*str))
-		str++;
-	return (!*str);
+	t_list		*l;
+
+	while (*alst && del)
+	{
+		l = (*alst)->next;
+		ft_lstdelone(&(*alst), del);
+		*alst = l;
+	}
+	*alst = NULL;
 }

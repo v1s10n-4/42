@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_printable.c                              :+:      :+:    :+:   */
+/*   strchr.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rodaniel <rodaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/19 22:04:38 by rodaniel          #+#    #+#             */
-/*   Updated: 2018/11/19 22:04:38 by rodaniel         ###   ########.fr       */
+/*   Created: 2018/11/13 15:39:37 by rodaniel          #+#    #+#             */
+/*   Updated: 2018/11/13 16:34:05 by rodaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_str_is_printable(char *str)
+char		*ft_strchr(const char *s, int c)
 {
-	while (ft_isprint(*str))
-		str++;
-	return (!*str);
+	int		i;
+
+	i = -1;
+	while (s[++i] || s[i] == c)
+		if (s[i] == c)
+			return (&((char *)s)[i]);
+	return (NULL);
 }

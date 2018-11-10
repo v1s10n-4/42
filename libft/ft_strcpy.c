@@ -5,19 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rodaniel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/08 00:59:17 by rodaniel          #+#    #+#             */
-/*   Updated: 2017/08/10 06:04:19 by rodaniel         ###   ########.fr       */
+/*   Created: 2018/11/09 16:20:43 by rodaniel          #+#    #+#             */
+/*   Updated: 2018/11/15 17:24:04 by rodaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	ft_strcpy(char *dest, char *src)
+#include "libft.h"
+
+char		*ft_strcpy(char *dst, const char *src)
 {
 	int		i;
 
-	i = 0;
-	dest[i] = src[i];
+	i = -1;
 	while (src[++i])
-		dest[i] = src[i];
-	dest[i] = 0;
-	return (*dest);
+		dst[i] = src[i];
+	dst[i] = src[i];
+	return (dst);
 }

@@ -1,20 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_printable.c                              :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rodaniel <rodaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/19 22:04:38 by rodaniel          #+#    #+#             */
-/*   Updated: 2018/11/19 22:04:38 by rodaniel         ###   ########.fr       */
+/*   Created: 2018/11/12 03:24:05 by rodaniel          #+#    #+#             */
+/*   Updated: 2018/11/19 00:34:24 by rodaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_str_is_printable(char *str)
+char	*ft_itoa(int n)
 {
-	while (ft_isprint(*str))
-		str++;
-	return (!*str);
+	char		*dst;
+	size_t		len;
+	long int	tmp;
+
+	len = 0;
+	tmp = n;
+	while ((tmp /= 10) != 0)
+		len++;
+	len += n < 0 ? 1 : 0;
+	if (!(dst = ft_strnew(len)))
+		return (NULL);
+	tmp = n;
+	if (n < 0)
+		dst[0] = '-';
+	dst[len + 1] = 0;
+	while (tmp != 0)
+	{
+		dst[len] = (48 + (tmp >= 0 ? tmp % 10 : -tmp % 10));
+		tmp /= 10;
+		len--;
+	}
+	return ((n == 0) ? ft_strdup("0") : dst);
 }

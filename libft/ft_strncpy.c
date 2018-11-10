@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rodaniel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rodaniel <rodaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/08 18:49:00 by rodaniel          #+#    #+#             */
-/*   Updated: 2017/08/13 11:04:47 by rodaniel         ###   ########.fr       */
+/*   Created: 2018/11/19 21:24:54 by rodaniel          #+#    #+#             */
+/*   Updated: 2018/11/19 21:24:54 by rodaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+#include "libft.h"
+
+char	*ft_strncpy(char *dest, const char *src, unsigned int n)
 {
 	unsigned int		i;
 

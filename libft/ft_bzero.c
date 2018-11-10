@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_printable.c                              :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rodaniel <rodaniel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rodaniel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/19 22:04:38 by rodaniel          #+#    #+#             */
-/*   Updated: 2018/11/19 22:04:38 by rodaniel         ###   ########.fr       */
+/*   Created: 2018/11/09 20:23:10 by rodaniel          #+#    #+#             */
+/*   Updated: 2018/11/10 20:33:30 by rodaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_str_is_printable(char *str)
+void		ft_bzero(void *s, size_t n)
 {
-	while (ft_isprint(*str))
-		str++;
-	return (!*str);
+	size_t	i;
+
+	i = -1;
+	while (++i < n)
+		((char *)s)[i] = '\0';
 }

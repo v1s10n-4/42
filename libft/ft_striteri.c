@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_printable.c                              :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rodaniel <rodaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/19 22:04:38 by rodaniel          #+#    #+#             */
-/*   Updated: 2018/11/19 22:04:38 by rodaniel         ###   ########.fr       */
+/*   Created: 2018/11/13 01:25:55 by rodaniel          #+#    #+#             */
+/*   Updated: 2018/11/19 00:13:46 by rodaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_str_is_printable(char *str)
+void		ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	while (ft_isprint(*str))
-		str++;
-	return (!*str);
+	int i;
+
+	i = -1;
+	if (s && *s && f && *f)
+		while (s && *s)
+			f(++i, s++);
 }

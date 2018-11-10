@@ -3,40 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rodaniel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rodaniel <rodaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/09 22:25:26 by rodaniel          #+#    #+#             */
-/*   Updated: 2017/08/12 21:32:11 by rodaniel         ###   ########.fr       */
+/*   Created: 2018/11/19 21:25:26 by rodaniel          #+#    #+#             */
+/*   Updated: 2018/11/19 21:25:26 by rodaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int					ft_min(int a, int b)
+#include "libft.h"
+
+static int		ft_min(int a, int b)
 {
-	if (b > a)
-		return (a);
-	return (b);
+	return ((b > a) ? a : b);
 }
 
-int					ft_strlen(char *str)
+unsigned int	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	int		i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-unsigned	int		ft_strlcat(char *dest, char *src, unsigned int size)
-{
-	unsigned int	i;
-	unsigned int	j;
-	unsigned int	res;
+	unsigned int i;
+	unsigned int j;
+	unsigned int res;
 
 	i = ft_strlen(dest);
 	j = 0;
 	res = ft_min(ft_strlen(dest), size) + ft_strlen(src);
-	while (i < size - 1 && src[j])
+	while (size && (i < size - 1 && src[j]))
 	{
 		dest[i] = src[j];
 		i++;

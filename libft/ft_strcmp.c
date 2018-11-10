@@ -3,45 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rodaniel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rodaniel <rodaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/08 19:56:36 by rodaniel          #+#    #+#             */
-/*   Updated: 2017/08/08 19:56:45 by rodaniel         ###   ########.fr       */
+/*   Created: 2018/11/12 18:36:11 by rodaniel          #+#    #+#             */
+/*   Updated: 2018/11/15 17:24:04 by rodaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(char *s1)
+#include "libft.h"
+
+int		ft_strcmp(const char *s1, const char *s2)
 {
-	int fesse;
+	size_t	l1;
+	size_t	l2;
 
-	fesse = 0;
-	while (s1[fesse] != '\0')
-	{
-		fesse++;
-	}
-	return (fesse);
-}
-
-int		ft_strcmp(char *s1, char *s2)
-{
-	int		i;
-	int		res;
-	int		len1;
-	int		len2;
-
-	i = 0;
-	res = 128;
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	while ((s1[i] != '\0' || s2[i] != '\0') && res == 128)
-	{
-		if (s1[i] != s2[i])
-		{
-			res = (len1 < len2) ? s1[i] - s2[i] : s2[i] - s1[i];
-		}
-		i++;
-	}
-	res = (res == 128) ? 0 : res;
-	res = (len1 >= len2) ? -res : res;
-	return (res);
+	l1 = ft_strlen(s1);
+	l2 = ft_strlen(s2);
+	return (ft_strncmp(s1, s2, l1 >= l2 ? l1 : l2));
 }
