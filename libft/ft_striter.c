@@ -1,37 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_striter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rodaniel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rodaniel <rodaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/09 22:25:26 by rodaniel          #+#    #+#             */
+/*   Created: 2018/11/12 22:08:58 by rodaniel          #+#    #+#             */
 /*   Updated: 2018/11/13 15:06:04 by rodaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_min(int a, int b)
+void	ft_striter(char *s, void (*f)(char *))
 {
-	return ((b > a) ? a : b);
-}
+	int i;
 
-unsigned int	ft_strlcat(char *dest, char *src, size_t size)
-{
-	unsigned int i;
-	unsigned int j;
-	unsigned int res;
-
-	i = ft_strlen(dest);
-	j = 0;
-	res = ft_min(ft_strlen(dest), size) + ft_strlen(src);
-	while (size && (i < size - 1 && src[j]))
-	{
-		dest[i] = src[j];
-		i++;
-		j++;
-	}
-	dest[i] = 0;
-	return (res);
+	i = -1;
+	while (s[++i])
+		f(&s[i]);
 }

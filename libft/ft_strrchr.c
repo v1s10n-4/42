@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   strrchr.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rodaniel <rodaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 18:36:03 by rodaniel          #+#    #+#             */
-/*   Updated: 2018/11/13 15:06:04 by rodaniel         ###   ########.fr       */
+/*   Created: 2018/11/13 16:11:34 by rodaniel          #+#    #+#             */
+/*   Updated: 2018/11/13 17:45:03 by rodaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned	int		ft_strlcpy(char *dest, char *src, unsigned int size)
-{
-	unsigned int	i;
-	unsigned int	j;
+#include "libft.h"
 
-	i = 0;
-	j = 0;
-	while (i < size - 1 && src[i])
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	while (dest[i])
-	{
-		dest[i] = 0;
-		i++;
-	}
-	while (src[j])
-		j++;
-	return (j);
+char	*ft_strrchr(const char *s, int c)
+{
+	int		i;
+	int		r;
+
+	i = -1;
+	r = -1;
+	if (!c)
+		return (&((char*)s)[ft_strlen(s)]);
+	while (s[++i])
+		if (s[i] == (unsigned char)c)
+			r = i;
+	return ((r != -1) ? &((char *)s)[r] : NULL);
 }

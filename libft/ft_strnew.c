@@ -1,37 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rodaniel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rodaniel <rodaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/09 22:25:26 by rodaniel          #+#    #+#             */
+/*   Created: 2018/11/12 04:36:56 by rodaniel          #+#    #+#             */
 /*   Updated: 2018/11/13 15:06:04 by rodaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_min(int a, int b)
+char		*ft_strnew(size_t size)
 {
-	return ((b > a) ? a : b);
-}
+	char	*dst;
 
-unsigned int	ft_strlcat(char *dest, char *src, size_t size)
-{
-	unsigned int i;
-	unsigned int j;
-	unsigned int res;
-
-	i = ft_strlen(dest);
-	j = 0;
-	res = ft_min(ft_strlen(dest), size) + ft_strlen(src);
-	while (size && (i < size - 1 && src[j]))
-	{
-		dest[i] = src[j];
-		i++;
-		j++;
-	}
-	dest[i] = 0;
-	return (res);
+	if ((dst = (char *)malloc(size)) == NULL)
+		return (NULL);
+	while (size)
+		dst[size--] = 0;
+	return (dst);
 }

@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rodaniel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rodaniel <rodaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/09 22:25:26 by rodaniel          #+#    #+#             */
+/*   Created: 2018/11/12 21:57:20 by rodaniel          #+#    #+#             */
 /*   Updated: 2018/11/13 15:06:04 by rodaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_min(int a, int b)
+int			ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	return ((b > a) ? a : b);
-}
+	size_t	l1;
+	size_t	l2;
 
-unsigned int	ft_strlcat(char *dest, char *src, size_t size)
-{
-	unsigned int i;
-	unsigned int j;
-	unsigned int res;
-
-	i = ft_strlen(dest);
-	j = 0;
-	res = ft_min(ft_strlen(dest), size) + ft_strlen(src);
-	while (size && (i < size - 1 && src[j]))
-	{
-		dest[i] = src[j];
-		i++;
-		j++;
-	}
-	dest[i] = 0;
-	return (res);
+	l1 = ft_strlen(s1);
+	l2 = ft_strlen(s2);
+	return (ft_strncmp(s1, s2, n) ? 0 : 1);
 }

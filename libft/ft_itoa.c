@@ -1,23 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rodaniel <rodaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 18:36:11 by rodaniel          #+#    #+#             */
-/*   Updated: 2018/11/13 15:06:04 by rodaniel         ###   ########.fr       */
+/*   Created: 2018/11/12 03:24:05 by rodaniel          #+#    #+#             */
+/*   Updated: 2018/11/14 19:54:13 by rodaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strcmp(const char *s1, const char *s2)
+char	*ft_itoa(int n)
 {
-	size_t	l1;
-	size_t	l2;
+	char		*dst;
+	int			len;
+	long int	tmp;
 
-	l1 = ft_strlen(s1);
-	l2 = ft_strlen(s2);
-	return (ft_strncmp(s1, s2, l1 >= l2 ? l1 : l2));
+	len = 0;
+	tmp = n;
+	while ((tmp /= 10) != 0)
+		len++;
+	len += n < 0 ? 2 : 1;
+	if (!(dst = ft_strnew(len)))
+		return (NULL);
+	tmp = n;
+	if (n < 0)
+		dst[0] = '-';
+	printf("\nn = %d\ntmp:%ld\nlen:%d\ndst:%s\n", n, tmp, len, dst);
+	while (tmp != 0)
+	{
+		dst[len] = (48 + (tmp >= 0 ? tmp % 10 : -tmp % 10));
+		tmp /= 10;
+		len--;
+	}
+//	dst[len + 1] = 0;
+	return (dst);
 }
