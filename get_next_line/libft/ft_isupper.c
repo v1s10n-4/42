@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_isupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rodaniel <rodaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/21 17:23:31 by rodaniel          #+#    #+#             */
-/*   Updated: 2018/11/21 17:24:27 by rodaniel         ###   ########.fr       */
+/*   Created: 2018/11/19 21:44:14 by rodaniel          #+#    #+#             */
+/*   Updated: 2018/11/19 21:45:21 by rodaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_GET_NEXT_LINE_H
-# define GET_NEXT_LINE_GET_NEXT_LINE_H
-# define BUFF_SIZE 32
+#include "libft.h"
 
-int		get_next_line(const int fd, char **line);
-
-#endif GET_NEXT_LINE_GET_NEXT_LINE_H
+int		ft_isupper(int c)
+{
+	return (c > 64 && c < 91);
+}

@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rodaniel <rodaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/21 17:23:31 by rodaniel          #+#    #+#             */
-/*   Updated: 2018/11/21 17:24:27 by rodaniel         ###   ########.fr       */
+/*   Created: 2018/11/13 01:25:55 by rodaniel          #+#    #+#             */
+/*   Updated: 2018/11/19 00:13:46 by rodaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_GET_NEXT_LINE_H
-# define GET_NEXT_LINE_GET_NEXT_LINE_H
-# define BUFF_SIZE 32
+#include "libft.h"
 
-int		get_next_line(const int fd, char **line);
+void		ft_striteri(char *s, void (*f)(unsigned int, char *))
+{
+	int i;
 
-#endif GET_NEXT_LINE_GET_NEXT_LINE_H
+	i = -1;
+	if (s && *s && f && *f)
+		while (s && *s)
+			f(++i, s++);
+}

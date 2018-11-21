@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rodaniel <rodaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/21 17:23:31 by rodaniel          #+#    #+#             */
-/*   Updated: 2018/11/21 17:24:27 by rodaniel         ###   ########.fr       */
+/*   Created: 2018/11/13 23:27:26 by rodaniel          #+#    #+#             */
+/*   Updated: 2018/11/16 01:56:07 by rodaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_GET_NEXT_LINE_H
-# define GET_NEXT_LINE_GET_NEXT_LINE_H
-# define BUFF_SIZE 32
+#include "libft.h"
 
-int		get_next_line(const int fd, char **line);
+char		*ft_strsub(const char *s, unsigned int start, size_t len)
+{
+	size_t	i;
+	char	*dst;
 
-#endif GET_NEXT_LINE_GET_NEXT_LINE_H
+	i = -1;
+	if (!s || !*s || (dst = (void *)malloc(len + 1)) == NULL)
+		return (NULL);
+	while (++i < len)
+		dst[i] = s[start + i];
+	dst[i] = 0;
+	return (dst);
+}

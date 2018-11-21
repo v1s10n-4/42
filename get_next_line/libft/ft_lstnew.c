@@ -1,19 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rodaniel <rodaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/21 17:23:31 by rodaniel          #+#    #+#             */
-/*   Updated: 2018/11/21 17:24:27 by rodaniel         ###   ########.fr       */
+/*   Created: 2018/11/15 05:11:18 by rodaniel          #+#    #+#             */
+/*   Updated: 2018/11/15 20:20:06 by rodaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_GET_NEXT_LINE_H
-# define GET_NEXT_LINE_GET_NEXT_LINE_H
-# define BUFF_SIZE 32
+#include "libft.h"
 
-int		get_next_line(const int fd, char **line);
+t_list		*ft_lstnew(const void *content, size_t content_size)
+{
+	t_list	*l;
 
-#endif GET_NEXT_LINE_GET_NEXT_LINE_H
+	if (!(l = (t_list*)malloc(sizeof(t_list))))
+		return (NULL);
+	if (!(l->content = (void *)malloc(content_size)))
+	{
+		free(l);
+		return (NULL);
+	}
+	l->content = content ? ft_memcpy(l->content, content, content_size) : NULL;
+	l->content_size = content ? content_size : 0;
+	l->next = NULL;
+	return (l);
+}

@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rodaniel <rodaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/21 17:23:31 by rodaniel          #+#    #+#             */
-/*   Updated: 2018/11/21 17:24:27 by rodaniel         ###   ########.fr       */
+/*   Created: 2018/11/16 03:54:51 by rodaniel          #+#    #+#             */
+/*   Updated: 2018/11/18 18:04:03 by rodaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_GET_NEXT_LINE_H
-# define GET_NEXT_LINE_GET_NEXT_LINE_H
-# define BUFF_SIZE 32
+#include "libft.h"
 
-int		get_next_line(const int fd, char **line);
+t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+{
+	t_list	*dst;
 
-#endif GET_NEXT_LINE_GET_NEXT_LINE_H
+	if (!lst)
+		return (NULL);
+	dst = f(lst);
+	dst->next = ft_lstmap(lst->next, f);
+	return (dst);
+}
